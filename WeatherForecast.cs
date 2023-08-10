@@ -1,3 +1,5 @@
+using System;
+
 namespace ilmare;
 
 public class WeatherForecast
@@ -8,5 +10,6 @@ public class WeatherForecast
 
     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 
+    #nullable enable
     public string? Summary { get; set; }
 }
