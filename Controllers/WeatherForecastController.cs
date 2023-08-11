@@ -7,47 +7,22 @@ using Microsoft.Extensions.Logging;
 namespace Ilmare.Controllers;
 
 [ApiController]
+// [Route("[controller]")] => https://localhost:7130/
+// [Route("[Ilmarecontroller]")] => https://localhost:7130/Ilmare
 [Route("[controller]")]
-public class WeatherForecastController : ControllerBase
+public class Controller : ControllerBase
 {
-    private static readonly string[] Summaries = new[]
-    {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
+    private readonly ILogger<Controller> _logger;
 
-    private readonly ILogger<WeatherForecastController> _logger;
-
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
+    public Controller(ILogger<Controller> logger)
     {
         _logger = logger;
     }
 
-/*
-    [HttpGet(Name = "GetWeatherForecast")]
-    public IEnumerable<WeatherForecast> Get()
-    {
-        return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-        {
-            Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            TemperatureC = Random.Shared.Next(-20, 55),
-            Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-        })
-        .ToArray();
-    }
-*/
     [HttpGet(Name = "Foo")]
     public History Get()
     {
-        var post = new Post(
-            1,
-"Test",
-"http://",
-"Ja",
-"Nej",
-"DateTime.Now.toString()"
-        )
-        ;
-
+        var post = new Post(1, "Test", "http://", "Ja", "Nej", "DateTime.Now.toString()");
         var posts = new List<Post>();
         posts.Add(post);
 
